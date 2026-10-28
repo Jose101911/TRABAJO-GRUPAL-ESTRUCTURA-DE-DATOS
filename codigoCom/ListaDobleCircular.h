@@ -9,7 +9,7 @@
 #define __ListasDoblesEliminar_ListaDobleCircular_h
 
 
-#include <Nodo.h>
+#include "Nodo.h"
 #include<iostream>
 using namespace std;
 
@@ -18,20 +18,19 @@ class ListaDobleCircular
 {
 
    private:
-   Nodo* cabeza;
+   Nodo<T>* cabeza;
    int tamanio;
 
 public:
 
-   template <typename T>
-ListaDobleCircular<T>::ListaDobleCircular()
+ListaDobleCircular()
 {
     cabeza = nullptr;
     tamanio = 0;
 }
  
-template <typename T>
-ListaDobleCircular<T>::~ListaDobleCircular()
+
+~ListaDobleCircular()
 {
     while (!estaVacia())
     {
@@ -39,26 +38,22 @@ ListaDobleCircular<T>::~ListaDobleCircular()
     }
 }
  
-template <typename T>
-bool ListaDobleCircular<T>::estaVacia()
+bool estaVacia()
 {
     return cabeza == nullptr;
 }
  
-template <typename T>
-int ListaDobleCircular<T>::getTamanio()
+int getTamanio()
 {
     return tamanio;
 }
  
-template <typename T>
-Nodo<T>* ListaDobleCircular<T>::getCabeza()
+Nodo <T>* getCabeza()
 {
     return cabeza;
 }
  
-template <typename T>
-void ListaDobleCircular<T>::insertarAlFinal(T valor)
+void insertarAlFinal(T valor)
 {
     Nodo<T>* nuevo = new Nodo<T>(valor);
  
@@ -80,8 +75,7 @@ void ListaDobleCircular<T>::insertarAlFinal(T valor)
     tamanio++;
 }
  
-template <typename T>
-void ListaDobleCircular<T>::insertarAlInicio(T valor)
+void insertarAlInicio(T valor)
 {
     Nodo<T>* nuevo = new Nodo<T>(valor);
  
@@ -103,8 +97,8 @@ void ListaDobleCircular<T>::insertarAlInicio(T valor)
     tamanio++;
 }
  
-template <typename T>
-Nodo<T>* ListaDobleCircular<T>::buscar(T dato)
+
+Nodo<T>*buscar(T dato)
 {
     if (estaVacia())
     {
@@ -125,8 +119,7 @@ Nodo<T>* ListaDobleCircular<T>::buscar(T dato)
     return nullptr;
 }
  
-template <typename T>
-void ListaDobleCircular<T>::eliminar(T dato)
+void eliminar(T dato)
 {
     if (estaVacia())
     {
@@ -171,8 +164,7 @@ void ListaDobleCircular<T>::eliminar(T dato)
     cout << "Elemento no encontrado" << endl;
 }
  
-template <typename T>
-void ListaDobleCircular<T>::imprimir()
+void imprimir()
 {
     if (estaVacia())
     {
