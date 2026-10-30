@@ -4,9 +4,9 @@
  * Modified: mi�rcoles, 28 de octubre de 2026 9:45:48
  * Purpose: Implementation of the class Persona
  ***********************************************************************/
-
+#include <iostream>
 #include "Persona.h"
-
+using namespace std;
 std::string Persona::getNombre1(void) const
 {
    return nombre1;
@@ -87,12 +87,21 @@ bool Persona::operator==(const Persona& otra) const
    return cedula == otra.cedula;
 }
  
-std::ostream& operator<<(std::ostream& salida, const Persona& p)
-{
-   salida << p.getCedula() << " | " << p.getNombre1() << " ";
-   if (!p.getNombre2().empty())
-      salida << p.getNombre2() << " ";
-   salida << p.getApellido1() << " " << p.getApellido2()
-          << " | " << p.getCorreo() << "\n";
-   return salida;
+ostream& operator<<(ostream& salida, const Persona& p) {
+    
+    salida << p.getCedula() << " | ";
+    
+   
+    salida << p.getNombre1() << " ";
+    salida << p.getNombre2() << " ";
+    
+    
+    salida << p.getApellido1() << " ";
+    salida << p.getApellido2() << " | ";
+    
+    
+    salida << p.getCorreo() << "\n";
+    
+    
+    return salida;
 }
