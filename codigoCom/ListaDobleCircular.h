@@ -226,33 +226,30 @@ void ListaDobleCircular<T>::imprimir()
 template <typename T>
 bool ListaDobleCircular<T>::prepararPersona(T& persona)
 {
-    
-    if (buscar(persona) != nullptr)
+        if (buscar(persona) != nullptr)
     {
         return false;
     }
-
     
     string nombre1   = persona.getNombre1();
     string nombre2   = persona.getNombre2();
     string apellido1 = persona.getApellido1();
 
     string base = "";
-    base += nombre1[0];
-    if (nombre2 == "")
-        base += '_';
-    else
-        base += nombre2[0];
-    base += apellido1;
+    base += *(&nombre1[0]);
+   if (nombre2 == "")
+    base += '_';
+else
+    base += *(&nombre2[0]);
+base += apellido1;
 
-    for (int i = 0; i < base.size(); i++)
+for (char* p = &base[0]; *p != '\0'; p++)
+{
+    if (*p >= 'A' && *p <= 'Z')
     {
-        if (base[i] >= 'A' && base[i] <= 'Z')
-        {
-            base[i] = base[i] + 32;
-        }
+        *p = *p + 32;
     }
-
+}
     
     string correo = base + "@espe.edu.ec";
     int contador = 0;
@@ -289,7 +286,6 @@ bool ListaDobleCircular<T>::prepararPersona(T& persona)
             correo = base + numero + "@espe.edu.ec";
         }
     }
-
     persona.setCorreo(correo);
     return true;
 }
